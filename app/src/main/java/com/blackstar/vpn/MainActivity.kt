@@ -46,9 +46,9 @@ class MainActivity : Activity() {
 
         addSpace(layout)
 
-        addPlan(layout, "FREE",)
-        addPlan(layout, "PREMIUM", "$1.99 / month")
-        addPlan(layout, "PREMIUM PRO", "$2.99 / month")
+        addPlan(layout, "FREE", "")
+        addPlan(layout, "PREMIUM", "\$1.99 / month")
+        addPlan(layout, "PREMIUM PRO", "\$2.99 / month")
 
         addSpace(layout)
 
@@ -78,7 +78,13 @@ class MainActivity : Activity() {
         price: String
     ) {
         val plan = TextView(this)
-        plan.text = "$name\n$price"
+
+        plan.text = if (price.isEmpty()) {
+            name
+        } else {
+            "$name\n$price"
+        }
+
         plan.textSize = 18f
         plan.gravity = Gravity.CENTER
         plan.setTextColor(Color.WHITE)
@@ -89,10 +95,12 @@ class MainActivity : Activity() {
             LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.WRAP_CONTENT
         )
+
         params.setMargins(0, 8, 0, 8)
 
         plan.setOnClickListener {
             selectedPlan = name
+
             Toast.makeText(
                 this,
                 "$name tanlandi",

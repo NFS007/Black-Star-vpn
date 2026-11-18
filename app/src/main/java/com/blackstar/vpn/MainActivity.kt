@@ -46,7 +46,7 @@ class MainActivity : Activity() {
 
         addSpace(layout)
 
-        addPlan(layout, "FREE", "Bepul")
+        addPlan(layout, "FREE")
         addPlan(layout, "PREMIUM", "$1.99 / month")
         addPlan(layout, "PREMIUM PRO", "$2.99 / month")
 
